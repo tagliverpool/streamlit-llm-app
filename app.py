@@ -17,7 +17,7 @@ def get_llm_response(user_message, selected_theme):
     LLMからの回答を取得する処理
     """
     # モデルのオブジェクトを用意
-    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.5)
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5)
 
     # 選択テーマに応じて使用するプロンプトのシステムメッセージを分岐
     if selected_theme == theme_1:
@@ -48,7 +48,7 @@ def get_llm_response(user_message, selected_theme):
         HumanMessage(content=user_message)
     ]
     # LLMからの回答取得
-    response = llm(messages)
+    response = llm.invoke(messages)
 
     return response.content
 
